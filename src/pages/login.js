@@ -13,34 +13,9 @@ import CircularProgress from '@material-ui/core/CircularProgress'
 
 import Icon from '../images/weeblogo.png'
 
-const styles = {
-    form: {
-        textAlign: 'center'
-    },
-    image: {
-        margin: '20px auto 20px auto',
-        height: 200,
-        width: 200
-    },
-    pageTitle: {
-        margin: '10px auto 10px auto'
-    },
-    textField: {
-        margin: '10px auto 10px auto'
-    },
-    button: {
-        marginTop: '20px',
-        position: 'relative'
-    },
-    customError: {
-        color: 'red',
-        fontSize: '0.8rem',
-        marginTop: 10
-    },
-    progress: {
-        position: 'absolute'
-    }
-}
+const styles = (theme) => ({
+    ...theme.spreadThis
+})
 
 class login extends Component {
     state = {
@@ -62,6 +37,7 @@ class login extends Component {
         axios.post('/login', userData)
             .then((res) => {
                 console.log(res.data)
+                localStorage.setItem('FBIdToken', `Bearer ${res.data.token}`)
                 this.setState({
                     loading: false
                 })
