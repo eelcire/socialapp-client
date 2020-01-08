@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import './App.css';
-import MuiThemeProvidor from '@material-ui/core/styles/MuiThemeProvider'
+import { ThemeProvider as MuiThemeProvider } from '@material-ui/core/styles'
 import createMuiTheme from '@material-ui/core/styles/createMuiTheme'
 
 import home from './pages/home'
@@ -32,7 +32,7 @@ const theme = createMuiTheme({
 
 function App() {
   return (
-    <MuiThemeProvidor theme = {theme}>
+    <MuiThemeProvider theme = {theme}>
       <div className="App">
         <Router>
           <NavBar></NavBar>
@@ -45,7 +45,7 @@ function App() {
           </div>
         </Router>
       </div>
-    </MuiThemeProvidor>
+    </MuiThemeProvider>
   );
 }
 
