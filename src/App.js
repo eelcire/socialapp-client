@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import './App.css';
 
+import { Provider } from 'react-redux'
+import store from './redux/store'
+
 import jwtDecode from 'jwt-decode'
 
 import { ThemeProvider as MuiThemeProvider } from '@material-ui/core/styles'
@@ -32,18 +35,18 @@ class App extends Component {
   render() {
     return (
       <MuiThemeProvider theme = {theme}>
-        <div className="App">
-          <Router>
-            <NavBar />
-            <div className = "container">
-              <Switch>
-                <Route exact path = "/" component = {home} />
-                <AuthRoute exact path = "/login" component = {login} authenticated = {authenticated}/>
-                <AuthRoute exact path = "/signup" component = {signup} authenticated = {authenticated}/>
-              </Switch>
-            </div>
-          </Router>
-        </div>
+        <Provider store = {store}>
+            <Router>
+              <NavBar />
+              <div className = "container">
+                <Switch>
+                  <Route exact path = "/" component = {home} />
+                  <AuthRoute exact path = "/login" component = {login} authenticated = {authenticated}/>
+                  <AuthRoute exact path = "/signup" component = {signup} authenticated = {authenticated}/>
+                </Switch>
+              </div>
+            </Router>
+        </Provider>
       </MuiThemeProvider>
     );
   }
