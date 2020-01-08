@@ -4,7 +4,6 @@ import PropTypes from 'prop-types'
 
 import Icon from '../images/weeblogo.png'
 
-import axios from 'axios'
 import { connect } from 'react-redux'
 import { loginUser } from '../redux/actions/userActions'
 
