@@ -25,8 +25,8 @@ export default function(state = initialState, action) {
             }
         case LOADING_USER:
             return {
-                loading: true,
-                ...state
+                ...state,
+                loading: true
             }
         default:
             return state
