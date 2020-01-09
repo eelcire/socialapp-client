@@ -6,6 +6,7 @@ import { connect } from 'react-redux'
 
 import { likePost, unlikePost } from '../redux/actions/dataActions'
 import MyButton from '../util/MyButton'
+import DeletePost from './DeletePost'
 
 import dayjs from 'dayjs'
 import relativeTime from 'dayjs/plugin/relativeTime'
@@ -22,6 +23,7 @@ import Favorite from '@material-ui/icons/Favorite'
 
 const styles = {
     card: {
+        position: 'relative',
         display: 'flex',
         marginBottom: 20
     },
@@ -52,7 +54,7 @@ class Post extends Component {
 
     render() {
         dayjs.extend(relativeTime)
-        const { classes, post: { body, createdAt, userImage, userHandle, postId, likeCount, commentCount }, user: { authenticated } } = this.props
+        const { classes, post: { body, createdAt, userImage, userHandle, postId, likeCount, commentCount }, user: { authenticated, credentials: { handle } } } = this.props
         const likeButton = !authenticated ? (
             <MyButton tip = "Like">
                 <Link to = "/login">
@@ -70,11 +72,17 @@ class Post extends Component {
                 </MyButton>
             )
         )
+
+        const deleteButton = authenticated && userHandle === handle ? (
+            <DeletePost postId = {postId} />
+        ) : null
+        
         return(
             <Card className = {classes.card}>
                 <CardMedia image = {userImage} title = "Profile Image" className = {classes.image}/>
                 <CardContent className = {classes.content}>
                     <Typography variant = "h5" component = {Link} to = {`/users/${userHandle}`} color = "primary">{userHandle}</Typography>
+                    {deleteButton}
                     <Typography variant = "body2" color = "textSecondary">{dayjs(createdAt).fromNow()}</Typography>
                     <Typography variant = "body1">{body}</Typography>
                     {likeButton}
