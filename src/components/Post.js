@@ -7,6 +7,7 @@ import { connect } from 'react-redux'
 import { likePost, unlikePost } from '../redux/actions/dataActions'
 import MyButton from '../util/MyButton'
 import DeletePost from './DeletePost'
+import PostDialog from './PostDialog'
 
 import dayjs from 'dayjs'
 import relativeTime from 'dayjs/plugin/relativeTime'
@@ -19,7 +20,6 @@ import CardMedia from '@material-ui/core/CardMedia'
 import ChatIcon from '@material-ui/icons/Chat'
 import FavoriteBorder from '@material-ui/icons/FavoriteBorder'
 import Favorite from '@material-ui/icons/Favorite'
-
 
 const styles = {
     card: {
@@ -91,6 +91,7 @@ class Post extends Component {
                         <ChatIcon color = "primary" />
                     </MyButton>
                     <span>{commentCount} comments</span>
+                    <PostDialog postId = {postId} userHandle = {userHandle} />
                 </CardContent>
             </Card>
         )

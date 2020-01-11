@@ -13,21 +13,23 @@ import CloseIcon from '@material-ui/icons/Close'
 
 import { connect } from 'react-redux'
 
-import { makePost } from '../redux/actions/dataActions'
+import { makePost, clearErrors } from '../redux/actions/dataActions'
 import MyButton from '../util/MyButton'
 
 const styles = (theme) => ({
     ...theme.spreadThis,
     submitButton: {
-        position: 'relative'
+        position: 'relative',
+        float: 'right',
+        marginTop: 10
     },
     progressSpinner: {
         position: 'absolute'
     },
     closeButton: {
         position: 'absolute',
-        left: '90%',
-        top: '10%'
+        left: '91%',
+        top: '6%'
     }
 })
 
@@ -45,8 +47,8 @@ class MakePost extends Component {
             })
         }
         if (!nextProps.UI.errors && !nextProps.UI.loading) {
-            this.setState({ body: '' })
-            this.handleClose()
+            this.setState({ body: '', open: false, errors: {} })
+            
         }
     }
 
@@ -55,6 +57,7 @@ class MakePost extends Component {
     }
 
     handleClose = () => {
+        this.props.clearErrors()
         this.setState({ open: false, errors: {} })
     }
 
@@ -111,6 +114,7 @@ class MakePost extends Component {
 
 MakePost.propTypes = {
     makePost: PropTypes.func.isRequired,
+    clearErrors: PropTypes.func.isRequired,
     UI: PropTypes.object.isRequired
 }
 
@@ -118,4 +122,4 @@ const mapStateToProps = (state) => ({
     UI: state.UI
 })
 
-export default connect(mapStateToProps, { makePost })(withStyles(styles)(MakePost))
+export default connect(mapStateToProps, { makePost, clearErrors })(withStyles(styles)(MakePost))
