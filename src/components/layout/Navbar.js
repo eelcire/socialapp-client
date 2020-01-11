@@ -8,10 +8,10 @@ import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
 import Button from '@material-ui/core/Button'
 import HomeIcon from '@material-ui/icons/Home'
-import Notifications from '@material-ui/icons/Notifications'
 
 import MyButton from '../../util/MyButton'
 import MakePost from '../post/MakePost'
+import Notifications from './Notifications'
 
 class Navbar extends Component {
     render() {
@@ -27,9 +27,7 @@ class Navbar extends Component {
                                     <HomeIcon color = "primary"/>
                                 </MyButton>
                             </Link>
-                            <MyButton tip = "Notifications">
-                                <Notifications color = "primary"/>
-                            </MyButton>
+                            <Notifications color = "primary"/>
                         </Fragment>
                     ) : (
                         <Fragment>
