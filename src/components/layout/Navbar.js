@@ -10,8 +10,8 @@ import Button from '@material-ui/core/Button'
 import HomeIcon from '@material-ui/icons/Home'
 import Notifications from '@material-ui/icons/Notifications'
 
-import MyButton from '../util/MyButton'
-import MakePost from './MakePost'
+import MyButton from '../../util/MyButton'
+import MakePost from '../post/MakePost'
 
 class Navbar extends Component {
     render() {

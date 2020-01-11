@@ -4,9 +4,10 @@ import PropTypes from 'prop-types'
 
 import dayjs from 'dayjs'
 
-import MyButton from '../util/MyButton'
-import { getPost} from '../redux/actions/dataActions'
+import MyButton from '../../util/MyButton'
+import { getPost} from '../../redux/actions/dataActions'
 import LikeButton from './LikeButton'
+import Comments from './Comments'
 
 import { connect } from 'react-redux'
 
@@ -22,10 +23,6 @@ import ChatIcon from '@material-ui/icons/Chat'
 
 const styles = (theme) => ({
     ...theme.spreadThis,
-    invisibleSeparator: {
-        border: 'none',
-        margin: 4
-    },
     profileImage: {
         maxWidth: 200,
         height: 200,
@@ -67,7 +64,7 @@ class PostDialog extends Component {
     render() {
         const {
             classes,
-                post: { postId, body, createdAt, likeCount, commentCount, userImage, userHandle}, UI: { loading } } = this.props
+                post: { postId, body, createdAt, likeCount, commentCount, userImage, userHandle, comments}, UI: { loading } } = this.props
 
         const dialogMarkup = loading ? (
             <div className = {classes.spinner}>
@@ -102,6 +99,8 @@ class PostDialog extends Component {
                     </MyButton>
                     <span>{commentCount} comments</span>
                 </Grid>
+                <hr className = {classes.visibleSeparator}/>
+                <Comments comments = {comments} />
             </Grid>
         )
 

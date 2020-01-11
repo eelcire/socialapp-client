@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 
 import { connect } from 'react-redux'
 
-import MyButton from '../util/MyButton'
+import MyButton from '../../util/MyButton'
 import DeletePost from './DeletePost'
 import PostDialog from './PostDialog'
 

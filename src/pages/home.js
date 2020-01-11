@@ -4,8 +4,8 @@ import Grid from '@material-ui/core/Grid'
 
 import { connect } from 'react-redux'
 
-import Post from '../components/Post'
-import Profile from '../components/Profile'
+import Post from '../components/post/Post'
+import Profile from '../components/profile/Profile'
 import { getPosts } from '../redux/actions/dataActions'
 
 class home extends Component {

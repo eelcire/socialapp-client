@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 
-import  MyButton from '../util/MyButton'
-import { likePost, unlikePost } from '../redux/actions/dataActions'
+import  MyButton from '../../util/MyButton'
+import { likePost, unlikePost } from '../../redux/actions/dataActions'
 
 import FavoriteBorder from '@material-ui/icons/FavoriteBorder'
 import Favorite from '@material-ui/icons/Favorite'

@@ -13,8 +13,8 @@ import CloseIcon from '@material-ui/icons/Close'
 
 import { connect } from 'react-redux'
 
-import { makePost, clearErrors } from '../redux/actions/dataActions'
-import MyButton from '../util/MyButton'
+import { makePost, clearErrors } from '../../redux/actions/dataActions'
+import MyButton from '../../util/MyButton'
 
 const styles = (theme) => ({
     ...theme.spreadThis,
